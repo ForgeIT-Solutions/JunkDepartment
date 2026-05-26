@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------
+   Junk Dept. — Brand Tokens (Tailwind v4 @theme)
+   --------------------------------------------------------------------- */
+@theme {
+  /* Forest green */
+  --color-brand-green: #1c4a2a;
+  --color-brand-green-dark: #122e1a;
+  --color-brand-green-light: #2a6040;
+
+  /* Gold */
+  --color-brand-gold: #c49a35;
+  --color-brand-gold-light: #d4ad55;
+  --color-brand-gold-dark: #a07a20;
+
+  /* Neutrals */
+  --color-brand-cream: #f5f0e8;
+  --color-brand-charcoal: #1a1a1a;
+  --color-brand-ash: #3d3d3d;
+  --color-brand-mist: #8a8a7a;
+
+  /* Type families (wired up via next/font in layout.tsx) */
+  --font-display: var(--font-barlow-condensed), "Barlow Condensed", system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
+}
+
+/* ---------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  background-color: #1a1a1a;
+}
+
+body {
+  background-color: var(--color-brand-charcoal);
+  color: var(--color-brand-cream);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------------------------------------------------------------------
+   Reusable button utilities
+   --------------------------------------------------------------------- */
+@layer components {
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: var(--color-brand-gold);
+    color: var(--color-brand-green-dark);
+    font-family: var(--font-display);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    border-radius: 2px;
+    transition: background-color 200ms ease, transform 200ms ease;
+  }
+  .btn-primary:hover {
+    background-color: var(--color-brand-gold-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: transparent;
+    color: var(--color-brand-gold);
+    border: 2px solid var(--color-brand-gold);
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: calc(0.75rem - 2px) calc(1.5rem - 2px);
+    font-size: 0.875rem;
+    border-radius: 2px;
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+  .btn-outline:hover {
+    background-color: var(--color-brand-gold);
+    color: var(--color-brand-green-dark);
+  }
+
+  .btn-dark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: var(--color-brand-green-dark);
+    color: var(--color-brand-cream);
+    font-family: var(--font-display);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    border-radius: 2px;
+    transition: background-color 200ms ease, transform 200ms ease;
+  }
+  .btn-dark:hover {
+    background-color: var(--color-brand-green);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline-dark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: transparent;
+    color: var(--color-brand-green-dark);
+    border: 2px solid var(--color-brand-green-dark);
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: calc(0.75rem - 2px) calc(1.5rem - 2px);
+    font-size: 0.875rem;
+    border-radius: 2px;
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+  .btn-outline-dark:hover {
+    background-color: var(--color-brand-green-dark);
+    color: var(--color-brand-cream);
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Decorative dividers
+   --------------------------------------------------------------------- */
+.section-divider {
+  position: relative;
+  height: 4px;
+  width: 100%;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-brand-gold) 0,
+    var(--color-brand-gold) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+  opacity: 0.6;
+}
+
+.footer-diagonal {
+  height: 48px;
+  background-color: var(--color-brand-green);
+  clip-path: polygon(0 0, 100% 60%, 100% 100%, 0 100%);
+}
+
+.bg-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.4 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.08;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* ---------------------------------------------------------------------
+   Animations
+   --------------------------------------------------------------------- */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  opacity: 0;
+  animation: fade-up 700ms ease-out forwards;
+}
+
+@keyframes overlay-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.overlay-link {
+  opacity: 0;
+  animation: overlay-in 350ms ease-out forwards;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: inline-flex;
+  animation: marquee 30s linear infinite;
+  white-space: nowrap;
+}
+
+/* Skip link */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
