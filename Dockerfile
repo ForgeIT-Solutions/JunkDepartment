@@ -1,12 +1,15 @@
 # syntax=docker/dockerfile:1
 
 # ---------- Build stage ----------
-FROM node:20-alpine AS builder
+# Debian/glibc (not alpine/musl): Next.js + Tailwind v4 native binaries have
+# first-class glibc builds, avoiding the musl wasm-fallback (@emnapi) chain.
+FROM node:20-slim AS builder
 WORKDIR /app
 
-# Install dependencies against the lockfile for reproducible builds
+# npm install (not ci): tolerates a lockfile generated on another platform and
+# resolves the correct Linux binaries in-container.
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm install --no-audit --no-fund
 
 # Build the static export (next.config.ts has output: "export" -> /app/out)
 COPY . .
