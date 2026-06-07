@@ -41,27 +41,27 @@ export function Footer() {
   return (
     <>
       <div className="footer-diagonal" aria-hidden />
-      <footer className="bg-brand-charcoal pt-16 pb-8">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-brand-ash">
+      <footer className="bg-brand-charcoal pt-12 sm:pt-16 pb-6 sm:pb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-12 pb-10 sm:pb-12 border-b border-brand-ash text-center md:text-left">
             {/* Col 1: Logo + tagline + social */}
-            <div>
+            <div className="flex flex-col items-center md:items-start">
               <Image
                 src="/logos/STACKED-GOLD.png"
                 alt="Junk Dept."
                 width={120}
                 height={120}
-                className="h-28 w-auto"
+                className="h-24 sm:h-28 w-auto"
               />
               <p className="mt-4 text-brand-mist text-sm leading-relaxed max-w-xs">
                 Fast, reliable junk removal — {SITE.city}&apos;s most trusted hauling
                 crew. Licensed, insured, and ready when you are.
               </p>
-              <div className="mt-6 flex items-center gap-3">
+              <div className="mt-5 sm:mt-6 flex items-center justify-center md:justify-start gap-2">
                 <a
                   href={SITE.social.facebook}
                   aria-label="Facebook"
-                  className="text-brand-mist hover:text-brand-gold transition-colors"
+                  className="text-brand-mist hover:text-brand-gold transition-colors p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -70,7 +70,7 @@ export function Footer() {
                 <a
                   href={SITE.social.instagram}
                   aria-label="Instagram"
-                  className="text-brand-mist hover:text-brand-gold transition-colors"
+                  className="text-brand-mist hover:text-brand-gold transition-colors p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -79,7 +79,7 @@ export function Footer() {
                 <a
                   href={SITE.social.google}
                   aria-label="Google Business Profile"
-                  className="text-brand-mist hover:text-brand-gold transition-colors"
+                  className="text-brand-mist hover:text-brand-gold transition-colors p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -90,15 +90,15 @@ export function Footer() {
 
             {/* Col 2: Quick Links */}
             <div>
-              <h4 className="text-brand-gold font-display font-black uppercase tracking-[0.25em] text-xs mb-4">
+              <h4 className="text-brand-gold font-display font-black uppercase tracking-[0.25em] text-xs mb-3 sm:mb-4">
                 Quick Links
               </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-1">
                 {NAV_LINKS.map((l) => (
                   <li key={l.href}>
                     <Link
                       href={l.href}
-                      className="text-brand-cream/80 hover:text-brand-gold transition-colors text-sm"
+                      className="text-brand-cream/80 hover:text-brand-gold transition-colors text-sm inline-block py-2 min-h-[44px]"
                     >
                       {l.label}
                     </Link>
@@ -109,21 +109,21 @@ export function Footer() {
 
             {/* Col 3: Contact */}
             <div>
-              <h4 className="text-brand-gold font-display font-black uppercase tracking-[0.25em] text-xs mb-4">
+              <h4 className="text-brand-gold font-display font-black uppercase tracking-[0.25em] text-xs mb-3 sm:mb-4">
                 Contact Us
               </h4>
               <p className="text-brand-cream text-sm">
                 <a
                   href={`tel:${SITE.phone.replace(/[^0-9+]/g, "")}`}
-                  className="hover:text-brand-gold transition-colors"
+                  className="hover:text-brand-gold transition-colors inline-block py-1.5 min-h-[44px]"
                 >
                   {SITE.phone}
                 </a>
               </p>
-              <p className="text-brand-cream text-sm mt-1">
+              <p className="text-brand-cream text-sm mt-1 break-words">
                 <a
                   href={`mailto:${SITE.email}`}
-                  className="hover:text-brand-gold transition-colors"
+                  className="hover:text-brand-gold transition-colors inline-block py-1.5 min-h-[44px]"
                 >
                   {SITE.email}
                 </a>
@@ -131,7 +131,7 @@ export function Footer() {
               <p className="text-brand-mist text-xs mt-3">{SITE.serviceArea}</p>
               <Link
                 href="/contact"
-                className="btn-primary mt-5 inline-flex text-xs"
+                className="btn-primary mt-5 inline-flex text-xs min-h-[44px]"
               >
                 Book a Pickup
               </Link>
@@ -139,19 +139,19 @@ export function Footer() {
           </div>
 
           {/* Bottom bar */}
-          <div className="pt-6 flex flex-col md:flex-row justify-between items-center gap-2">
-            <p className="text-brand-mist text-xs">
+          <div className="pt-5 sm:pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
+            <p className="text-brand-mist text-xs text-center">
               © {new Date().getFullYear()} {SITE.name} All rights reserved.
             </p>
-            <p className="text-brand-mist text-xs">
+            <p className="text-brand-mist text-xs text-center">
               Built by{" "}
               <a
-                href="https://forgeitsolutions.com"
+                href="https://serviceflowpro.co"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-brand-gold hover:underline"
               >
-                ForgeIT Solutions
+                SERVICEFLOWPRO
               </a>
             </p>
           </div>

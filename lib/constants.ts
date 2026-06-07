@@ -6,13 +6,13 @@
 export const SITE = {
   name: "Junk Dept.",
   tagline: "Removal Services",
-  phone: "(XXX) XXX-XXXX", // TODO client to fill
+  phone: "(555) 123-4567", // TODO client to fill — demo placeholder number
   email: "info@junkdept.com", // TODO client to fill
   address: "", // TODO client to fill
-  city: "[City]", // TODO client to fill — replace all [City] references
-  state: "[State]", // TODO client to fill
+  city: "Your City", // TODO client to fill — replace all "Your City" references
+  state: "ST", // TODO client to fill
   url: "https://junkdept.com", // TODO client to fill — production URL
-  serviceArea: "Serving the Greater [City] Area",
+  serviceArea: "Serving the Greater Your City Area",
   hours: [
     { day: "Monday–Saturday", time: "7:00 AM – 7:00 PM" },
     { day: "Sunday", time: "By appointment" },
@@ -118,6 +118,78 @@ export const SERVICES = [
   },
 ];
 
+/**
+ * Three service tiers (from owner discovery). Pricing is intentionally
+ * quote-based — no hard numbers until the pricing model is built.
+ * `BOOKING_URL` is the Jobber online-booking / embed link — drop it in once
+ * Patrick provides it and every "Get a Quote" CTA points to it.
+ */
+export const BOOKING_URL = "/contact"; // TODO: replace with Jobber booking URL
+
+export const TIERS = [
+  {
+    name: "Curbside",
+    badge: "Tier 1",
+    tagline: "You bring it out. We haul it off.",
+    desc: "Leave your items at the curb or in the yard — we pull up, load, and go. The fastest, most affordable way to clear out.",
+    features: [
+      "Curbside or yard pickup",
+      "Same-day availability",
+      "You stage it, we haul it",
+      "Licensed & fully insured",
+    ],
+    cta: "Get a Free Quote",
+    featured: false,
+  },
+  {
+    name: "Full-Service",
+    badge: "Most Popular",
+    tagline: "We come in and do the heavy lifting.",
+    desc: "Don't lift a finger. Our crew comes inside, safely removes the items, and hauls everything away — digital waiver and supplies included.",
+    features: [
+      "In-home / on-site removal",
+      "We do all the lifting",
+      "Signed digital liability waiver",
+      "Donation & recycling included",
+    ],
+    cta: "Get a Free Quote",
+    featured: true,
+  },
+  {
+    name: "Premium",
+    badge: "White-Glove",
+    tagline: "Maximum protection for high-value spaces.",
+    desc: "Total care for luxury homes and sensitive jobs. Floor and door-jamb protection, shoe covers, a broom-clean finish, and extra crew — tailored to your property and custom quoted.",
+    features: [
+      "Full property protection",
+      "Broom-clean / vacuum finish",
+      "Extra crew when needed",
+      "Guaranteed proper disposal",
+    ],
+    cta: "Request a Custom Quote",
+    featured: false,
+  },
+];
+
+// Safety is the backbone of the service — surfaced across the site.
+export const SAFETY_POINTS = [
+  {
+    icon: "ShieldCheck",
+    title: "Licensed & Insured",
+    desc: "Fully licensed and carrying general liability coverage on every job — no risk to you.",
+  },
+  {
+    icon: "HardHat",
+    title: "Trained, Careful Crew",
+    desc: "We protect your floors, walls, and doorways — booties, covers, and corner guards on premium jobs.",
+  },
+  {
+    icon: "FileCheck",
+    title: "Signed Before We Touch a Thing",
+    desc: "A digital liability waiver is signed up front, so everyone's protected from the start.",
+  },
+];
+
 export const ADDITIONAL_SERVICES = [
   "Hot Tub Removal",
   "Piano & Heavy Item Removal",
@@ -129,13 +201,14 @@ export const ADDITIONAL_SERVICES = [
   "Foreclosure Cleanouts",
 ];
 
+// TODO client to fill — swap for the real city + surrounding towns you serve
 export const SERVICE_AREA_CITIES = [
-  "[City]",
-  "[Nearby Town 1]",
-  "[Nearby Town 2]",
-  "[Nearby Town 3]",
-  "[Nearby Town 4]",
-  "[Nearby Town 5]",
+  "Your City",
+  "Surrounding Towns",
+  "Nearby Suburbs",
+  "Your County",
+  "Neighboring Areas",
+  "& Beyond",
 ];
 
 export const STATS = [
@@ -164,10 +237,10 @@ export const VALUES = [
 ];
 
 export const TEAM = [
-  /* TODO: Replace with real team photos in /public/images/team/ */
-  { name: "[Founder Name]", role: "Founder & Lead Hauler", photo: null },
-  { name: "[Crew Member]", role: "Crew Lead", photo: null },
-  { name: "[Crew Member]", role: "Hauler", photo: null },
+  /* TODO: Replace name + add real team photos in /public/images/team/ */
+  { name: "Your Name Here", role: "Founder & Lead Hauler", photo: null },
+  { name: "Team Member", role: "Crew Lead", photo: null },
+  { name: "Team Member", role: "Hauler", photo: null },
 ];
 
 /**

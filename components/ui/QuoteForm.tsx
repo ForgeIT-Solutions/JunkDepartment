@@ -19,7 +19,7 @@ import {
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputBase =
-  "w-full bg-brand-charcoal border border-brand-ash text-brand-cream placeholder-brand-mist/60 px-4 py-3 rounded-sm focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/40 transition";
+  "w-full bg-brand-charcoal border border-brand-ash text-brand-cream placeholder-brand-mist/60 px-4 py-3 min-h-[48px] text-base rounded-sm focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/40 transition";
 
 const labelBase =
   "block text-brand-gold uppercase tracking-[0.18em] text-xs font-bold mb-2";
@@ -37,6 +37,16 @@ export function QuoteForm() {
 
     setStatus("submitting");
     setErrorMsg(null);
+
+    // DEMO MODE: until a real Formspree ID is set in lib/constants.ts, simulate a
+    // successful submission so the form's success state can be demoed end-to-end.
+    if (FORMSPREE_FORM_ID === "YOUR_FORM_ID_HERE") {
+      await new Promise((r) => setTimeout(r, 700));
+      setSubmittedName(name);
+      setStatus("success");
+      form.reset();
+      return;
+    }
 
     try {
       const res = await fetch(`https://formspree.io/f/${FORMSPREE_FORM_ID}`, {
@@ -66,17 +76,23 @@ export function QuoteForm() {
 
   if (status === "success") {
     return (
-      <div className="bg-brand-green-dark border-l-4 border-brand-gold p-8 rounded-sm">
+      <div className="bg-brand-green-dark border-l-4 border-brand-gold p-5 sm:p-8 rounded-sm">
         <CheckCircle2
-          size={48}
-          className="text-brand-gold"
+          size={40}
+          className="text-brand-gold sm:hidden"
           strokeWidth={1.5}
           aria-hidden
         />
-        <h3 className="mt-4 font-display font-black uppercase text-brand-cream text-3xl tracking-tight">
+        <CheckCircle2
+          size={48}
+          className="text-brand-gold hidden sm:block"
+          strokeWidth={1.5}
+          aria-hidden
+        />
+        <h3 className="mt-4 font-display font-black uppercase text-brand-cream text-2xl sm:text-3xl tracking-tight">
           Thanks{submittedName ? `, ${submittedName}` : ""}!
         </h3>
-        <p className="mt-2 text-brand-cream/80">
+        <p className="mt-2 text-brand-cream/80 text-sm sm:text-base">
           We&apos;ll be in touch within 24 hours to confirm your quote.
         </p>
       </div>
@@ -162,7 +178,7 @@ export function QuoteForm() {
           name="description"
           required
           rows={5}
-          className={inputBase}
+          className={`${inputBase} min-h-[140px]`}
           placeholder="Tell us what you'd like hauled — type of items, approximate volume, access (stairs, basement, etc.)"
         />
       </div>
