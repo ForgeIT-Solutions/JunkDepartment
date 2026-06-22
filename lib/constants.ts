@@ -6,7 +6,7 @@
 export const SITE = {
   name: "Junk Dept.",
   tagline: "Removal Services",
-  phone: "(555) 123-4567", // TODO client to fill — demo placeholder number
+  phone: "(331) 213-9977",
   email: "info@junkdept.com", // TODO client to fill
   address: "", // TODO client to fill
   city: "Your City", // TODO client to fill — replace all "Your City" references
@@ -237,10 +237,14 @@ export const VALUES = [
 ];
 
 export const TEAM = [
-  /* TODO: Replace name + add real team photos in /public/images/team/ */
-  { name: "Your Name Here", role: "Founder & Lead Hauler", photo: null },
-  { name: "Team Member", role: "Crew Lead", photo: null },
-  { name: "Team Member", role: "Hauler", photo: null },
+  /* TODO: add Crew Lead + Hauler photos to /public/images/team/ and set `photo` */
+  {
+    name: "Patrick Sullivan",
+    role: "Founder & Lead Hauler",
+    photo: "/images/team/patrick-sullivan.jpg",
+  },
+  { name: "Jahames Strickland", role: "Crew Lead", photo: null },
+  { name: "Marek Olympia", role: "Hauler", photo: null },
 ];
 
 /**

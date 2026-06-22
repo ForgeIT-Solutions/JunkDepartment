@@ -111,18 +111,27 @@ export default function AboutPage() {
               key={i}
               className="bg-brand-green-dark border border-brand-ash p-4 sm:p-6 rounded-sm text-center"
             >
-              {/* TODO: add member photo to /public/images/team/ and set `photo` in lib/constants.ts */}
-              <div
-                role="img"
-                aria-label={`Photo placeholder for ${member.name}`}
-                className="mx-auto w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-brand-green border-2 border-dashed border-brand-gold/40 flex flex-col items-center justify-center"
-              >
-                <Camera size={28} className="text-brand-gold/60 sm:hidden" strokeWidth={1.5} aria-hidden />
-                <Camera size={34} className="text-brand-gold/60 hidden sm:block" strokeWidth={1.5} aria-hidden />
-                <span className="mt-1 text-[8px] sm:text-[9px] uppercase tracking-[0.18em] text-brand-mist">
-                  Add Photo
-                </span>
-              </div>
+              {/* TODO: add remaining member photos to /public/images/team/ and set `photo` in lib/constants.ts */}
+              {member.photo ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={member.photo}
+                  alt={`Photo of ${member.name}`}
+                  className="mx-auto w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover border-2 border-brand-gold/60"
+                />
+              ) : (
+                <div
+                  role="img"
+                  aria-label={`Photo placeholder for ${member.name}`}
+                  className="mx-auto w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-brand-green border-2 border-dashed border-brand-gold/40 flex flex-col items-center justify-center"
+                >
+                  <Camera size={28} className="text-brand-gold/60 sm:hidden" strokeWidth={1.5} aria-hidden />
+                  <Camera size={34} className="text-brand-gold/60 hidden sm:block" strokeWidth={1.5} aria-hidden />
+                  <span className="mt-1 text-[8px] sm:text-[9px] uppercase tracking-[0.18em] text-brand-mist">
+                    Add Photo
+                  </span>
+                </div>
+              )}
               <h3 className="mt-4 sm:mt-5 font-display font-black uppercase text-brand-cream text-base sm:text-xl tracking-tight">
                 {member.name}
               </h3>
