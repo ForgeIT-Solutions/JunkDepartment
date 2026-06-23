@@ -7,7 +7,7 @@ export const SITE = {
   name: "Junk Dept.",
   tagline: "Removal Services",
   phone: "(331) 213-9977",
-  email: "info@junkdept.com", // TODO client to fill
+  email: "info@getjunkdept.com",
   address: "", // TODO client to fill
   city: "Your City", // TODO client to fill — replace all "Your City" references
   state: "ST", // TODO client to fill

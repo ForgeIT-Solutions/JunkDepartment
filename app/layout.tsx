@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     description: `Fast, reliable junk removal in ${SITE.city}.`,
     images: ["/logos/JUNKDEPT-COLORED.png"],
   },
-  icons: { icon: "/favicon.ico" },
+  // Icons auto-wired from app/icon.png + app/apple-icon.png (Next file convention).
 };
 
 export default function RootLayout({
