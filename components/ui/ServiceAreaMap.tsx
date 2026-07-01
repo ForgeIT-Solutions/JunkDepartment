@@ -59,45 +59,50 @@ export function ServiceAreaMap() {
         const map = L.map(ref.current, {
           center: [SERVICE_AREA.center.lat, SERVICE_AREA.center.lng],
           zoom: SERVICE_AREA.zoom,
+          zoomControl: false, // no zoom buttons — clean display map
           scrollWheelZoom: false,
-          zoomControl: true,
+          doubleClickZoom: false,
+          touchZoom: false,
+          boxZoom: false,
+          keyboard: false,
+          attributionControl: false, // credit moves to a subtle caption below
         });
         mapRef.current = map;
 
         L.tileLayer(
           "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-          {
-            attribution: "&copy; OpenStreetMap &copy; CARTO",
-            subdomains: "abcd",
-            maxZoom: 19,
-          }
+          { subdomains: "abcd", maxZoom: 19 }
         ).addTo(map);
 
-        // Green service-area polygon.
+        // Green service-area polygon (glow via .svc-zone in globals.css).
         L.polygon(
           SERVICE_AREA.boundary.map((p) => [p.lat, p.lng]),
           {
+            className: "svc-zone",
             color: "#3bd15a",
             weight: 3,
-            opacity: 0.9,
+            opacity: 0.95,
             fillColor: "#2a6040",
-            fillOpacity: 0.3,
+            fillOpacity: 0.28,
           }
         ).addTo(map);
 
-        // Glowing marker per location.
-        const glowIcon = (name: string) =>
-          L.divIcon({
-            className: "",
-            html: `<div title="${name}, IL" style="width:14px;height:14px;border-radius:9999px;background:#3bd15a;border:2px solid #fff;box-shadow:0 0 14px 5px rgba(59,209,90,0.65)"></div>`,
-            iconSize: [14, 14],
-            iconAnchor: [7, 7],
-          });
+        // Modern glowing marker per location (pulse + hover via globals.css).
+        const dot = L.divIcon({
+          className: "map-pin",
+          html: '<span class="map-dot"></span>',
+          iconSize: [18, 18],
+          iconAnchor: [9, 9],
+        });
 
         SERVICE_AREA.cities.forEach((c) => {
-          L.marker([c.lat, c.lng], { icon: glowIcon(c.name) })
+          L.marker([c.lat, c.lng], { icon: dot, riseOnHover: true })
             .addTo(map)
-            .bindTooltip(`${c.name}, IL`, { direction: "top", offset: [0, -8] });
+            .bindTooltip(`${c.name}, IL`, {
+              direction: "top",
+              offset: [0, -10],
+              className: "svc-tip",
+            });
         });
 
         // Leaflet needs a size recalc once the container has painted.
@@ -138,11 +143,16 @@ export function ServiceAreaMap() {
   }
 
   return (
-    <div
-      ref={ref}
-      className="w-full aspect-[4/3] sm:aspect-[16/9] rounded-sm overflow-hidden border border-brand-ash bg-brand-charcoal z-0"
-      role="img"
-      aria-label="Live map of the Junk Dept. service area across the Illinois Fox Valley"
-    />
+    <div className="group">
+      <div
+        ref={ref}
+        className="w-full aspect-[4/3] sm:aspect-[16/9] rounded-2xl overflow-hidden bg-brand-charcoal z-0 ring-1 ring-brand-gold/20 shadow-2xl shadow-black/50 transition-shadow duration-300 group-hover:ring-brand-gold/40"
+        role="img"
+        aria-label="Live map of the Junk Dept. service area across the Illinois Fox Valley"
+      />
+      <p className="mt-2 text-right text-[10px] text-brand-mist/50">
+        Map data © OpenStreetMap contributors, © CARTO
+      </p>
+    </div>
   );
 }

@@ -209,6 +209,82 @@ h1, h2, h3, h4, h5, h6 {
   white-space: nowrap;
 }
 
+/* ---------------------------------------------------------------------
+   Service-area Leaflet map
+   --------------------------------------------------------------------- */
+.leaflet-container {
+  background: var(--color-brand-charcoal);
+  font-family: var(--font-sans);
+}
+/* Strip the default white box off divIcon markers (2-class specificity beats CDN). */
+.leaflet-div-icon.map-pin {
+  background: transparent;
+  border: 0;
+}
+
+/* Glowing location dot with a pulsing ring + hover lift. */
+.map-dot {
+  position: relative;
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: #3bd15a;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 14px 5px rgba(59, 209, 90, 0.5);
+  cursor: pointer;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.map-dot::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 9999px;
+  border: 2px solid rgba(59, 209, 90, 0.55);
+  animation: map-pulse 2.4s ease-out infinite;
+}
+.map-dot:hover {
+  transform: scale(1.3);
+  box-shadow: 0 0 22px 9px rgba(59, 209, 90, 0.85);
+}
+@keyframes map-pulse {
+  0% { transform: scale(0.5); opacity: 0.85; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/* Service-area zone: soft green glow + subtle hover fill. */
+.svc-zone {
+  filter: drop-shadow(0 0 6px rgba(59, 209, 90, 0.5));
+  transition: fill-opacity 300ms ease;
+}
+.svc-zone:hover {
+  fill-opacity: 0.42;
+}
+
+/* Branded tooltip. */
+.leaflet-tooltip.svc-tip {
+  background: var(--color-brand-charcoal);
+  color: var(--color-brand-gold);
+  border: 1px solid var(--color-brand-gold);
+  border-radius: 6px;
+  padding: 3px 9px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+}
+.leaflet-tooltip.svc-tip::before {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-dot::after {
+    animation: none;
+  }
+}
+
 /* Skip link */
 .sr-only {
   position: absolute;
