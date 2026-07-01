@@ -1,21 +1,17 @@
 import type { Metadata } from "next";
-import { Barlow_Condensed, DM_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SITE } from "@/lib/constants";
 
-const barlowCondensed = Barlow_Condensed({
-  variable: "--font-barlow-condensed",
+// Inter stands in for SF Pro Display (Apple's proprietary face can't be embedded
+// on a commercial site). Near-identical geometric-humanist sans; heavy weights
+// carry the display/headline role.
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["700", "800", "900"],
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -55,10 +51,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${barlowCondensed.variable} ${dmSans.variable}`}
-    >
+    <html lang="en" className={inter.variable}>
       <body className="min-h-screen flex flex-col bg-brand-charcoal text-brand-cream antialiased">
         <a
           href="#main"

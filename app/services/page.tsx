@@ -3,6 +3,8 @@ import { Sofa, Zap, Trash2, Hammer, Leaf, Building2, Check } from "lucide-react"
 import { PageHero } from "@/components/ui/PageHero";
 import { CTABanner } from "@/components/ui/CTABanner";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { TrustBar } from "@/components/ui/TrustBar";
+import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { SERVICES, ADDITIONAL_SERVICES, SITE } from "@/lib/constants";
 
 const ICONS = { Sofa, Zap, Trash2, Hammer, Leaf, Building2 } as const;
@@ -22,6 +24,8 @@ export default function ServicesPage() {
         subtext="From single-item pickups to whole-property cleanouts — we've got the crew and the truck."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
       />
+
+      <TrustBar tone="green-dark" />
 
       {/* Detail grid */}
       <section className="bg-brand-charcoal py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
@@ -97,6 +101,12 @@ export default function ServicesPage() {
             ))}
           </ul>
         </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-brand-charcoal py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
+        <SectionHeading eyebrow="FAQs" title="Common Questions" centered />
+        <FaqAccordion />
       </section>
 
       <CTABanner />

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Phone, Mail, Clock, MapPin } from "lucide-react";
 import { PageHero } from "@/components/ui/PageHero";
 import { QuoteForm } from "@/components/ui/QuoteForm";
+import { TrustBar } from "@/components/ui/TrustBar";
 import { SITE, SERVICE_AREA_CITIES } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -22,6 +23,8 @@ export default function ContactPage() {
         subtext="Get a free, no-obligation quote in under 24 hours."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
       />
+
+      <TrustBar tone="green-dark" />
 
       <section className="bg-brand-charcoal py-12 sm:py-16 lg:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-12">

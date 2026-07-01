@@ -20,9 +20,11 @@
   --color-brand-ash: #3d3d3d;
   --color-brand-mist: #8a8a7a;
 
-  /* Type families (wired up via next/font in layout.tsx) */
-  --font-display: var(--font-barlow-condensed), "Barlow Condensed", system-ui, sans-serif;
-  --font-sans: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
+  /* Type families (wired up via next/font in layout.tsx).
+     Inter stands in for SF Pro Display; -apple-system pulls real SF Pro on
+     Apple devices, then falls back to Inter everywhere else. */
+  --font-display: var(--font-inter), -apple-system, "SF Pro Display", BlinkMacSystemFont, system-ui, sans-serif;
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 
 /* ---------------------------------------------------------------------

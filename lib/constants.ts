@@ -91,13 +91,13 @@ export const SERVICES = [
   {
     icon: "Leaf",
     name: "Yard Waste",
-    desc: "Brush, stumps, and landscaping debris.",
+    desc: "Brush, branches, and landscaping debris.",
     details:
       "Branches piling up after a storm or a big landscaping job? We clear yard waste and take it to local green-waste facilities.",
     includes: [
       "Brush & branches",
       "Leaves & grass clippings",
-      "Stumps & root balls",
+      "Storm & wind debris",
       "Fence & deck debris",
     ],
     priceFrom: "$129",
@@ -209,6 +209,81 @@ export const SERVICE_AREA_CITIES = [
   "Your County",
   "Neighboring Areas",
   "& Beyond",
+];
+
+// Trust-signal badge row shown directly under the hero.
+export const TRUST_BADGES = [
+  { icon: "Star", title: "5-Star Rated", sub: "On Google" },
+  { icon: "ShieldCheck", title: "Licensed & Insured", sub: "Every Job" },
+  { icon: "Sparkles", title: "Instant AI Quote", sub: "Photo to Price" },
+  { icon: "MapPin", title: "Same-Day Service", sub: `${SITE.city} & Beyond` },
+];
+
+// Four-step "how to work with us" flow (real Junk Dept process).
+export const PROCESS_STEPS = [
+  {
+    n: "01",
+    title: "Snap & Send",
+    desc: "Send a photo of your junk or fill out the quick form. Takes under a minute.",
+  },
+  {
+    n: "02",
+    title: "Get Your Free Quote",
+    desc: "Our AI gives you an instant ballpark, and we confirm a firm price up front. No surprises.",
+  },
+  {
+    n: "03",
+    title: "Pick Your Time Slot",
+    desc: "Book a time that works for you. We text when we're about 15 minutes out.",
+  },
+  {
+    n: "04",
+    title: "We Haul It Away",
+    desc: "Our crew loads, hauls, and sweeps up. You only pay when the job's done right.",
+  },
+];
+
+// Three differentiators for the "Why Junk Dept." section.
+export const WHY_US = [
+  {
+    icon: "MessageSquare",
+    title: "Clear, Upfront Pricing",
+    desc: "You get a firm quote before we lift a thing. No hourly games, no driveway surprises.",
+  },
+  {
+    icon: "Clock",
+    title: "On Time, Every Time",
+    desc: "We show up in the window we promise and keep you posted the whole way.",
+  },
+  {
+    icon: "Recycle",
+    title: "Eco-First Disposal",
+    desc: "We donate and recycle whatever we can before anything ever sees a landfill.",
+  },
+];
+
+// Homepage FAQ accordion.
+export const FAQS = [
+  {
+    q: `What areas does ${SITE.name} serve?`,
+    a: `We serve ${SITE.city} and the surrounding area. Not sure if you're in range? Send us a photo and we'll let you know right away.`,
+  },
+  {
+    q: "How does pricing work?",
+    a: "Snap a photo or fill out our form and our AI gives you an instant ballpark. We confirm a firm, upfront price before we start, so you always know what you're paying.",
+  },
+  {
+    q: "Do you offer same-day service?",
+    a: "Yes, same-day removal is available depending on the schedule. The sooner you reach out, the better your odds of a same-day slot.",
+  },
+  {
+    q: "What do you do with the junk?",
+    a: "We donate usable items to local charities and recycle whatever we can. Sending things to the landfill is always our last resort.",
+  },
+  {
+    q: "Is there anything you won't take?",
+    a: "We handle most household and commercial junk, but we don't do demolition or hazardous materials. If you're unsure about an item, just ask.",
+  },
 ];
 
 export const STATS = [

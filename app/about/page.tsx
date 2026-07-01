@@ -4,6 +4,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { CTABanner } from "@/components/ui/CTABanner";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { TrustBar } from "@/components/ui/TrustBar";
 import { VALUES, TEAM, SITE } from "@/lib/constants";
 
 const ICONS = { Clock, Sparkles, Recycle } as const;
@@ -22,6 +23,8 @@ export default function AboutPage() {
         title="Local Crew. Serious Work."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
       />
+
+      <TrustBar tone="green-dark" />
 
       {/* Story section */}
       <section className="bg-brand-charcoal py-14 sm:py-20 lg:py-24 px-4 sm:px-6">

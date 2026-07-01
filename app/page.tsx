@@ -8,34 +8,34 @@ import {
   Leaf,
   Building2,
   ArrowRight,
-  Truck,
   Recycle,
-  ShieldCheck,
-  HardHat,
-  FileCheck,
+  Star,
+  MessageSquare,
+  Clock,
+  Phone,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CTABanner } from "@/components/ui/CTABanner";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
-import { Tiers } from "@/components/ui/Tiers";
 import { AIQuote } from "@/components/ui/AIQuote";
+import { FaqAccordion } from "@/components/ui/FaqAccordion";
+import { TrustBar } from "@/components/ui/TrustBar";
 import {
   SERVICES,
   STATS,
   SERVICE_AREA_CITIES,
-  SAFETY_POINTS,
+  PROCESS_STEPS,
+  WHY_US,
   SITE,
 } from "@/lib/constants";
 
-const ICONS = { Sofa, Zap, Trash2, Hammer, Leaf, Building2 } as const;
-type IconKey = keyof typeof ICONS;
-const SAFETY_ICONS = { ShieldCheck, HardHat, FileCheck } as const;
-type SafetyIconKey = keyof typeof SAFETY_ICONS;
+const SERVICE_ICONS = { Sofa, Zap, Trash2, Hammer, Leaf, Building2 } as const;
+const WHY_ICONS = { MessageSquare, Clock, Recycle } as const;
 
 export const metadata: Metadata = {
   title: `${SITE.name} | Junk Removal Services in ${SITE.city}`,
-  description: `Fast, affordable junk removal in ${SITE.city}. Furniture, appliances, cleanouts and more. Same-day service available. Get a free quote today!`,
+  description: `Fast, affordable junk removal in ${SITE.city}. Furniture, appliances, cleanouts and more. Same-day service available. Get an instant AI quote today!`,
 };
 
 const localBusinessJsonLd = {
@@ -57,6 +57,8 @@ const localBusinessJsonLd = {
 };
 
 export default function Home() {
+  const telHref = `tel:${SITE.phone.replace(/[^0-9+]/g, "")}`;
+
   return (
     <>
       <script
@@ -64,116 +66,130 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
       />
 
-      {/* ============== 1. HERO ============== */}
-      <section className="relative bg-brand-green bg-grain min-h-[80vh] sm:min-h-[88vh] flex items-center px-4 sm:px-6 py-16 sm:py-24 overflow-hidden">
-        {/* Faint stacked logo watermark */}
+      {/* ============== 1. HERO (split: hook left, image right) ============== */}
+      <section className="relative bg-brand-green-dark bg-grain overflow-hidden px-4 sm:px-6 pt-16 pb-12 sm:pt-24 sm:pb-20">
         <Image
           src="/logos/STACKED-WHITE.png"
           alt=""
           aria-hidden
           width={600}
           height={600}
-          className="absolute -bottom-20 -right-10 w-[40rem] max-w-[80vw] opacity-[0.04] pointer-events-none select-none"
+          className="absolute -bottom-24 -right-16 w-[42rem] max-w-[85vw] opacity-[0.04] pointer-events-none select-none"
         />
-        {/* Decorative diagonal gold rule (hidden on small screens to avoid overflow) */}
-        <div
-          aria-hidden
-          className="hidden sm:block absolute top-12 right-12 w-40 h-[2px] bg-brand-gold rotate-45 origin-right opacity-80"
-        />
-
-        <div className="relative max-w-5xl mx-auto text-center w-full">
-          <span
-            className="fade-up inline-block px-3 py-1 sm:px-4 sm:py-1.5 border border-brand-gold/60 text-brand-gold text-[10px] sm:text-xs font-display font-bold uppercase tracking-[0.25em] sm:tracking-[0.3em] rounded-full"
-            style={{ animationDelay: "0ms" }}
-          >
-            Licensed · Insured · Same-Day
-          </span>
-
-          <h1
-            className="fade-up mt-5 sm:mt-6 font-display font-black text-brand-cream uppercase leading-[0.9] tracking-tight text-[2.75rem] sm:text-6xl md:text-8xl lg:text-9xl"
-            style={{ animationDelay: "150ms" }}
-          >
-            We Haul It.
-            <br />
-            <span className="text-brand-gold">You Forget It.</span>
-          </h1>
-
-          <p
-            className="fade-up mt-5 sm:mt-6 mx-auto max-w-2xl text-brand-cream/80 text-base sm:text-lg md:text-xl leading-relaxed px-2 sm:px-0"
-            style={{ animationDelay: "300ms" }}
-          >
-            {SITE.name} is {SITE.city}&apos;s go-to removal crew — licensed,
-            insured, and careful with your space. Snap a photo and get a quote in
-            under a minute.
-          </p>
-
-          <div
-            className="fade-up mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center"
-            style={{ animationDelay: "450ms" }}
-          >
-            <Button href="/contact" className="w-full sm:w-auto min-h-[48px] text-base">
-              Get a Quote in Under a Minute <ArrowRight size={18} />
-            </Button>
-            <Button
-              href="/services"
-              variant="outline"
-              className="w-full sm:w-auto min-h-[48px] text-base"
+        <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+          {/* Left: hook */}
+          <div className="text-center lg:text-left">
+            <span
+              className="fade-up inline-flex items-center gap-2 px-3 py-1.5 border border-brand-gold/60 text-brand-gold text-[10px] sm:text-xs font-display font-bold uppercase tracking-[0.25em] rounded-full"
+              style={{ animationDelay: "0ms" }}
             >
-              See Our Services
-            </Button>
+              <Star size={12} className="fill-brand-gold" /> 5-Star Rated Junk Removal
+            </span>
+
+            <h1
+              className="fade-up mt-5 font-display font-black text-brand-cream uppercase leading-[0.92] tracking-tight text-[2.75rem] sm:text-6xl lg:text-7xl"
+              style={{ animationDelay: "120ms" }}
+            >
+              Junk Removal in {SITE.city}
+              <br />
+              <span className="text-brand-gold">Done Right.</span>
+            </h1>
+
+            <p
+              className="fade-up mt-5 mx-auto lg:mx-0 max-w-xl text-brand-cream/80 text-base sm:text-lg leading-relaxed"
+              style={{ animationDelay: "240ms" }}
+            >
+              {SITE.name} is {SITE.city}&apos;s go-to removal crew: licensed,
+              insured, and careful with your space. Snap a photo, get an instant
+              quote, and pick a time that works for you.
+            </p>
+
+            <div
+              className="fade-up mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-stretch sm:items-center"
+              style={{ animationDelay: "360ms" }}
+            >
+              <Button href="#quote" className="w-full sm:w-auto min-h-[52px] text-base">
+                Get an Instant Quote <ArrowRight size={18} />
+              </Button>
+              <a href={telHref} className="btn-outline w-full sm:w-auto min-h-[52px] text-base">
+                <Phone size={16} /> {SITE.phone}
+              </a>
+            </div>
           </div>
 
-          <ul
-            className="fade-up mt-10 sm:mt-12 flex flex-col sm:flex-row sm:flex-wrap justify-center items-center gap-y-2 sm:gap-y-3 gap-x-8 text-brand-cream/70 text-xs sm:text-sm"
-            style={{ animationDelay: "600ms" }}
-          >
-            <li className="flex items-center gap-2">
-              <ShieldCheck size={14} className="text-brand-gold sm:hidden" />
-              <ShieldCheck size={16} className="text-brand-gold hidden sm:block" />
-              <span>Licensed &amp; Insured</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <Truck size={14} className="text-brand-gold sm:hidden" />
-              <Truck size={16} className="text-brand-gold hidden sm:block" />
-              <span>Same-Day Available</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <Recycle size={14} className="text-brand-gold sm:hidden" />
-              <Recycle size={16} className="text-brand-gold hidden sm:block" />
-              <span>Eco-Friendly Disposal</span>
-            </li>
-          </ul>
+          {/* Right: hero image slot */}
+          <div className="fade-up" style={{ animationDelay: "300ms" }}>
+            <ImagePlaceholder
+              label="Truck & Crew"
+              hint="Hero shot: the crew + truck on a job"
+              aspect="aspect-[4/3]"
+              className="border-t-[3px] border-t-brand-gold shadow-2xl"
+            />
+          </div>
         </div>
       </section>
 
-      {/* ============== 1.5 AI AUTO-QUOTE ============== */}
-      <AIQuote />
+      {/* ============== 1.5 TRUST BADGE BAR ============== */}
+      <TrustBar />
 
-      {/* ============== 2. SERVICES OVERVIEW ============== */}
+      {/* ============== 2. INTRO / VALUE PROP ============== */}
       <section className="bg-brand-charcoal py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-12 items-center">
+          <div className="order-first md:order-last">
+            <ImagePlaceholder
+              label="On the Job"
+              hint="Crew loading the truck"
+              aspect="aspect-[4/3]"
+              className="border-t-[3px] border-t-brand-gold"
+            />
+          </div>
+          <div>
+            <p className="text-brand-gold font-display font-black uppercase tracking-[0.25em] text-[10px] sm:text-xs mb-3">
+              Why Homeowners Call Us
+            </p>
+            <h2 className="font-display font-black uppercase text-brand-cream text-3xl sm:text-4xl lg:text-5xl leading-[0.95] tracking-tight">
+              Hauling Junk Shouldn&apos;t Be a Hassle.
+            </h2>
+            <div className="mt-5 space-y-4 text-brand-cream/80 text-base sm:text-lg leading-relaxed">
+              <p>
+                We started as a small local crew with one promise: show up on
+                time and do the job right. Today we&apos;ve cleared hundreds of
+                homes, garages, and businesses across {SITE.city}.
+              </p>
+              <p>
+                You get a firm, upfront price before we lift a thing, a crew that
+                respects your home, and responsible disposal that keeps usable
+                items out of the landfill.
+              </p>
+            </div>
+            <div className="mt-7">
+              <Button href="/about" variant="outline" className="min-h-[48px]">
+                More About Us <ArrowRight size={16} />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============== 3. SERVICES GRID ============== */}
+      <section className="bg-brand-green py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
         <SectionHeading
-          eyebrow="What We Remove"
-          title="No Job Too Big. No Junk Too Heavy."
+          eyebrow="What We Haul"
+          title={`Junk Removal Services in ${SITE.city}`}
           centered
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 lg:gap-6 mt-10 sm:mt-14 lg:mt-16 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 lg:gap-6 mt-10 sm:mt-14 max-w-6xl mx-auto">
           {SERVICES.map((service) => {
-            const Icon = ICONS[service.icon as IconKey];
+            const Icon = SERVICE_ICONS[service.icon as keyof typeof SERVICE_ICONS];
             return (
               <article
                 key={service.name}
-                className="group bg-brand-green-dark border-t-[3px] border-brand-gold p-5 sm:p-7 lg:p-8 rounded-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_var(--color-brand-gold)] hover:shadow-brand-gold/40 active:scale-[0.99]"
+                className="group bg-brand-green-dark border-t-[3px] border-brand-gold p-5 sm:p-7 lg:p-8 rounded-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_var(--color-brand-gold)] hover:shadow-brand-gold/40"
               >
                 <Icon
-                  size={32}
-                  className="text-brand-gold transition-transform duration-300 group-hover:scale-110 sm:hidden"
-                  strokeWidth={1.5}
-                  aria-hidden
-                />
-                <Icon
-                  size={40}
-                  className="text-brand-gold transition-transform duration-300 group-hover:scale-110 hidden sm:block"
+                  size={38}
+                  className="text-brand-gold transition-transform duration-300 group-hover:scale-110"
                   strokeWidth={1.5}
                   aria-hidden
                 />
@@ -183,79 +199,47 @@ export default function Home() {
                 <p className="mt-1.5 sm:mt-2 text-brand-mist text-sm leading-relaxed">
                   {service.desc}
                 </p>
+                <a
+                  href="/services"
+                  className="mt-4 inline-flex items-center gap-1.5 text-brand-gold text-xs sm:text-sm font-display font-bold uppercase tracking-[0.15em] hover:gap-2.5 transition-all"
+                >
+                  Learn More <ArrowRight size={14} />
+                </a>
               </article>
             );
           })}
         </div>
-
-        <div className="text-center mt-10 sm:mt-12">
-          <Button
-            href="/services"
-            variant="outline"
-            className="w-full sm:w-auto min-h-[48px]"
-          >
-            View All Services <ArrowRight size={16} />
-          </Button>
-        </div>
       </section>
 
-      {/* ============== 2.5 SERVICE TIERS ============== */}
-      <Tiers />
+      {/* ============== 3.5 AI AUTO-QUOTE ============== */}
+      <div id="quote">
+        <AIQuote />
+      </div>
 
-      {/* ============== 3. HOW IT WORKS ============== */}
-      <section className="relative bg-brand-green py-14 sm:py-20 lg:py-24 px-4 sm:px-6 overflow-hidden">
+      {/* ============== 4. OUR PROCESS (4 steps) ============== */}
+      <section className="relative bg-brand-charcoal py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
         <SectionHeading
-          eyebrow="How It Works"
-          title="Three Steps. Done."
+          eyebrow="Our Process"
+          title={`How to Work With ${SITE.name}`}
           centered
         />
 
-        <div className="relative max-w-6xl mx-auto mt-14 sm:mt-16 lg:mt-20 grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-12 md:gap-6">
-          {/* Dashed gold connector — desktop only */}
-          <div
-            aria-hidden
-            className="hidden md:block absolute top-12 left-[16%] right-[16%] border-t-2 border-dashed border-brand-gold/40"
-          />
-
-          {[
-            {
-              n: "01",
-              title: "Book Online or Call",
-              desc: "Schedule in under 2 minutes — text, call, or fill out our quote form.",
-            },
-            {
-              n: "02",
-              title: "We Show Up On Time",
-              desc: "Our crew arrives in your 2-hour window — fully licensed and insured.",
-            },
-            {
-              n: "03",
-              title: "We Haul. You Relax.",
-              desc: "We load, haul, and sweep up. You sit back and enjoy the space.",
-            },
-          ].map((step) => (
+        <div className="relative max-w-6xl mx-auto mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6">
+          {PROCESS_STEPS.map((step) => (
             <div
               key={step.n}
-              className="relative bg-brand-green-dark/60 backdrop-blur-sm border border-brand-gold/20 p-8 sm:p-10 text-center rounded-sm overflow-hidden"
+              className="relative bg-brand-green-dark border border-brand-gold/20 p-7 sm:p-8 rounded-sm"
             >
-              {/* Truck backdrop watermark */}
-              <Truck
-                aria-hidden
-                strokeWidth={1}
-                className="absolute inset-0 m-auto w-[85%] h-[85%] text-brand-gold/10 pointer-events-none select-none"
-              />
-
               <span
                 aria-hidden
-                className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2 bg-brand-green flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 -mt-3 sm:-mt-4 font-display font-black text-6xl sm:text-7xl text-brand-gold/30"
+                className="font-display font-black text-5xl sm:text-6xl text-brand-gold/30 leading-none"
               >
                 {step.n}
               </span>
-
-              <h3 className="relative mt-10 sm:mt-12 font-display font-black uppercase text-brand-cream text-xl sm:text-2xl">
+              <h3 className="mt-3 font-display font-black uppercase text-brand-cream text-lg sm:text-xl tracking-tight">
                 {step.title}
               </h3>
-              <p className="relative mt-2.5 sm:mt-3 text-brand-cream/70 text-sm leading-relaxed">
+              <p className="mt-2 text-brand-cream/70 text-sm leading-relaxed">
                 {step.desc}
               </p>
             </div>
@@ -263,15 +247,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============== 4. WHY CHOOSE US ============== */}
-      <section className="bg-brand-charcoal py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
+      {/* ============== 5. WHY CHOOSE US (3 columns) ============== */}
+      <section className="bg-brand-green py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="Why Choose Us"
-            title="Local. Licensed. Loaded with Experience."
+            title={`Why ${SITE.name}`}
             centered
           />
 
+          <div className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+            {WHY_US.map((item) => {
+              const Icon = WHY_ICONS[item.icon as keyof typeof WHY_ICONS];
+              return (
+                <div
+                  key={item.title}
+                  className="bg-brand-green-dark border-t-[3px] border-brand-gold p-7 sm:p-8 rounded-sm text-center"
+                >
+                  <Icon size={40} className="mx-auto text-brand-gold" strokeWidth={1.5} aria-hidden />
+                  <h3 className="mt-4 sm:mt-5 font-display font-black uppercase text-brand-cream text-xl sm:text-2xl tracking-tight">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2.5 text-brand-cream/70 text-sm sm:text-base leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Stats strip */}
           <dl className="mt-12 sm:mt-16 grid grid-cols-2 md:grid-cols-4 gap-5 sm:gap-8 text-center">
             {STATS.map((s) => (
               <div key={s.label}>
@@ -279,70 +284,22 @@ export default function Home() {
                 <dd className="font-display font-black text-brand-gold text-4xl sm:text-5xl md:text-6xl leading-none">
                   {s.value}
                 </dd>
-                <p className="mt-2 text-brand-mist text-[10px] sm:text-xs uppercase tracking-[0.18em] sm:tracking-[0.2em]">
+                <p className="mt-2 text-brand-cream/70 text-[10px] sm:text-xs uppercase tracking-[0.2em]">
                   {s.label}
                 </p>
               </div>
             ))}
           </dl>
-
-          {/* Safety — the backbone of the service */}
-          <div className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-            {SAFETY_POINTS.map((point) => {
-              const Icon = SAFETY_ICONS[point.icon as SafetyIconKey];
-              return (
-                <div
-                  key={point.title}
-                  className="bg-brand-green-dark border-t-[3px] border-brand-gold p-6 sm:p-7 rounded-sm text-center"
-                >
-                  <Icon
-                    size={36}
-                    className="mx-auto text-brand-gold"
-                    strokeWidth={1.5}
-                    aria-hidden
-                  />
-                  <h3 className="mt-4 font-display font-black uppercase text-brand-cream text-lg sm:text-xl tracking-tight">
-                    {point.title}
-                  </h3>
-                  <p className="mt-2 text-brand-cream/70 text-sm leading-relaxed">
-                    {point.desc}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-
-          <p className="mt-12 sm:mt-16 max-w-3xl mx-auto text-center text-brand-cream/80 text-base sm:text-lg leading-relaxed">
-            We&apos;re a local, family-run crew — licensed, insured, and serious
-            about doing right by your home and the environment. Whenever
-            possible, we donate usable items and recycle materials rather than
-            sending them straight to the landfill.
-          </p>
-
-          <blockquote className="mt-10 sm:mt-12 max-w-3xl mx-auto border-l-4 border-brand-gold pl-4 sm:pl-6 py-2">
-            <p className="text-brand-cream italic text-lg sm:text-xl leading-relaxed">
-              &ldquo;Junk Dept. cleared out my entire garage in under 2 hours.
-              Unbelievable service — highly recommend.&rdquo;
-            </p>
-            <footer className="mt-3 text-brand-gold text-xs sm:text-sm font-bold uppercase tracking-widest">
-              — Sarah M.
-            </footer>
-          </blockquote>
         </div>
       </section>
 
-      {/* ============== 4.5 OUR WORK GALLERY ============== */}
-      <section className="bg-brand-green py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
-        <SectionHeading
-          eyebrow="Our Work"
-          title="See the Difference."
-          centered
-        />
-        <p className="mt-4 sm:mt-5 max-w-2xl mx-auto text-center text-brand-cream/70 text-sm sm:text-base">
-          Real jobs, real results. Swap these frames for your own before-and-after
-          photos to show off the crew&apos;s work.
+      {/* ============== 6. GALLERY ============== */}
+      <section className="bg-brand-charcoal py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
+        <SectionHeading eyebrow="Our Work" title="See the Difference" centered />
+        <p className="mt-4 max-w-2xl mx-auto text-center text-brand-mist text-sm sm:text-base">
+          Real jobs, real results. Swap these in for the crew&apos;s own
+          before-and-after photos.
         </p>
-
         <div className="mt-10 sm:mt-14 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           <ImagePlaceholder label="Before / After" hint="Garage cleanout" />
           <ImagePlaceholder label="Before / After" hint="Furniture haul" />
@@ -354,24 +311,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============== 5. SERVICE AREA BANNER ============== */}
-      <section className="bg-brand-green py-10 sm:py-12 overflow-hidden">
+      {/* ============== 7. SERVICE AREA ============== */}
+      <section className="bg-brand-green py-12 sm:py-16 overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="font-display font-black uppercase text-brand-cream text-2xl sm:text-3xl md:text-5xl tracking-tight leading-tight sm:leading-none">
-            Serving {SITE.city}, Surrounding Areas,
-            <ArrowRight
-              size={20}
-              className="text-brand-gold inline mx-2 sm:hidden align-middle"
-            />
-            <ArrowRight
-              size={36}
-              className="text-brand-gold inline mx-3 hidden sm:inline-block align-middle"
-            />
-            <span>and Beyond.</span>
+          <p className="text-brand-gold font-display font-black uppercase tracking-[0.25em] text-[10px] sm:text-xs mb-3">
+            Service Area
+          </p>
+          <h2 className="font-display font-black uppercase text-brand-cream text-2xl sm:text-3xl md:text-5xl tracking-tight leading-tight">
+            Serving {SITE.city}
+            <ArrowRight size={28} className="text-brand-gold inline mx-2 align-middle" />
+            and Beyond
           </h2>
         </div>
-        <div className="mt-5 sm:mt-6 overflow-hidden">
-          <div className="marquee-track text-brand-gold/60 font-display font-bold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-xs sm:text-sm">
+        <div className="mt-6 overflow-hidden">
+          <div className="marquee-track text-brand-gold/60 font-display font-bold uppercase tracking-[0.25em] text-xs sm:text-sm">
             {[...SERVICE_AREA_CITIES, ...SERVICE_AREA_CITIES, ...SERVICE_AREA_CITIES, ...SERVICE_AREA_CITIES].map(
               (city, i) => (
                 <span key={i} className="px-5 sm:px-8 flex items-center gap-5 sm:gap-8">
@@ -384,7 +337,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============== 6. FINAL CTA ============== */}
+      {/* ============== 8. FAQ ============== */}
+      <section className="bg-brand-charcoal py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
+        <SectionHeading eyebrow="FAQs" title={`${SITE.name} FAQs`} centered />
+        <FaqAccordion />
+      </section>
+
+      {/* ============== 9. FINAL CTA ============== */}
       <CTABanner />
     </>
   );
