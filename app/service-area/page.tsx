@@ -4,7 +4,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { TrustBar } from "@/components/ui/TrustBar";
 import { ServiceAreaMap } from "@/components/ui/ServiceAreaMap";
 import { CTABanner } from "@/components/ui/CTABanner";
-import { SERVICE_AREA } from "@/lib/constants";
+import { SERVICE_AREA_CITIES } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Service Area",
@@ -37,13 +37,13 @@ export default function ServiceAreaPage() {
               Towns We Serve
             </h2>
             <ul className="space-y-2">
-              {SERVICE_AREA.cities.map((c) => (
+              {SERVICE_AREA_CITIES.map((city) => (
                 <li
-                  key={c.name}
+                  key={city}
                   className="flex items-center gap-3 text-brand-cream border-b border-brand-ash/40 pb-2.5 text-base"
                 >
                   <MapPin size={18} className="text-brand-gold shrink-0" aria-hidden />
-                  <span className="font-medium">{c.name}, IL</span>
+                  <span className="font-medium">{city}, IL</span>
                 </li>
               ))}
             </ul>
