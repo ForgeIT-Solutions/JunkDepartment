@@ -212,6 +212,7 @@ export const SERVICE_AREA_CITIES = [
   "Plano",
   "Joliet",
   "Sugar Grove",
+  "Yorkville",
 ];
 
 // Data for the live Leaflet map on the Service Area page. `cities` are the
@@ -228,6 +229,7 @@ export const SERVICE_AREA = {
     { name: "Plano", lat: 41.6628, lng: -88.5372 },
     { name: "Joliet", lat: 41.525, lng: -88.0817 },
     { name: "Sugar Grove", lat: 41.7614, lng: -88.442 },
+    { name: "Yorkville", lat: 41.6412, lng: -88.4473 },
   ],
   boundary: [
     { lat: 41.7614, lng: -88.442 }, // Sugar Grove (NW)

@@ -59,15 +59,16 @@ export function ServiceAreaMap() {
         const map = L.map(ref.current, {
           center: [SERVICE_AREA.center.lat, SERVICE_AREA.center.lng],
           zoom: SERVICE_AREA.zoom,
-          zoomControl: false, // no zoom buttons — clean display map
-          scrollWheelZoom: false,
-          doubleClickZoom: false,
-          touchZoom: false,
-          boxZoom: false,
-          keyboard: false,
+          minZoom: 8,
+          maxZoom: 15,
+          zoomControl: true,
+          scrollWheelZoom: true,
+          doubleClickZoom: true,
+          touchZoom: true,
           attributionControl: false, // credit moves to a subtle caption below
         });
         mapRef.current = map;
+        map.zoomControl.setPosition("bottomright");
 
         L.tileLayer(
           "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
