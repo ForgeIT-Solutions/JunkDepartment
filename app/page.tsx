@@ -18,7 +18,6 @@ import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CTABanner } from "@/components/ui/CTABanner";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
-import { AIQuote } from "@/components/ui/AIQuote";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { TrustBar } from "@/components/ui/TrustBar";
 import {
@@ -35,7 +34,7 @@ const WHY_ICONS = { MessageSquare, Clock, Recycle } as const;
 
 export const metadata: Metadata = {
   title: `${SITE.name} | Junk Removal Services in ${SITE.city}`,
-  description: `Fast, affordable junk removal in ${SITE.city}. Furniture, appliances, cleanouts and more. Same-day service available. Get an instant AI quote today!`,
+  description: `Fast, affordable junk removal in ${SITE.city}. Furniture, appliances, cleanouts and more. Same-day service available. Get a free quote today!`,
 };
 
 const localBusinessJsonLd = {
@@ -100,8 +99,8 @@ export default function Home() {
               style={{ animationDelay: "240ms" }}
             >
               {SITE.name} is {SITE.city}&apos;s go-to removal crew: licensed,
-              insured, and careful with your space. Snap a photo, get an instant
-              quote, and pick a time that works for you.
+              insured, and careful with your space. Get a free quote and pick a
+              time that works for you.
             </p>
 
             <div
@@ -210,11 +209,6 @@ export default function Home() {
           })}
         </div>
       </section>
-
-      {/* ============== 3.5 AI AUTO-QUOTE ============== */}
-      <div id="quote">
-        <AIQuote />
-      </div>
 
       {/* ============== 4. OUR PROCESS (4 steps) ============== */}
       <section className="relative bg-brand-charcoal py-14 sm:py-20 lg:py-24 px-4 sm:px-6">

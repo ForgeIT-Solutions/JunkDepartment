@@ -216,7 +216,7 @@ export const SERVICE_AREA_CITIES = [
 export const TRUST_BADGES = [
   { icon: "Star", title: "5-Star Rated", sub: "On Google" },
   { icon: "ShieldCheck", title: "Licensed & Insured", sub: "Every Job" },
-  { icon: "Sparkles", title: "Instant AI Quote", sub: "Photo to Price" },
+  { icon: "Sparkles", title: "Free Quotes", sub: "No Obligation" },
   { icon: "MapPin", title: "Same-Day Service", sub: `${SITE.city} & Beyond` },
 ];
 
@@ -224,13 +224,13 @@ export const TRUST_BADGES = [
 export const PROCESS_STEPS = [
   {
     n: "01",
-    title: "Snap & Send",
-    desc: "Send a photo of your junk or fill out the quick form. Takes under a minute.",
+    title: "Tell Us What You've Got",
+    desc: "Fill out the quick form or give us a call with what you need hauled. Takes under a minute.",
   },
   {
     n: "02",
     title: "Get Your Free Quote",
-    desc: "Our AI gives you an instant ballpark, and we confirm a firm price up front. No surprises.",
+    desc: "We send you a firm, upfront price before we start. No hourly games, no surprises.",
   },
   {
     n: "03",
@@ -271,7 +271,7 @@ export const FAQS = [
   },
   {
     q: "How does pricing work?",
-    a: "Snap a photo or fill out our form and our AI gives you an instant ballpark. We confirm a firm, upfront price before we start, so you always know what you're paying.",
+    a: "Fill out our quick form or give us a call, and we'll give you a firm, upfront price before we start, so you always know what you're paying.",
   },
   {
     q: "Do you offer same-day service?",
