@@ -1,4 +1,4 @@
-import { Camera } from "lucide-react";
+import Image from "next/image";
 import clsx from "clsx";
 
 /**
@@ -44,11 +44,13 @@ export function ImagePlaceholder({
           backgroundSize: "24px 24px",
         }}
       />
-      <Camera
-        size={36}
-        strokeWidth={1.5}
-        className="text-brand-gold/70 relative"
+      <Image
+        src="/logos/STACKED-GOLD.png"
+        alt=""
         aria-hidden
+        width={120}
+        height={120}
+        className="relative w-16 sm:w-20 h-auto opacity-80 select-none pointer-events-none"
       />
       <p className="relative mt-3 font-display font-black uppercase tracking-[0.18em] text-brand-cream text-sm sm:text-base">
         {label}
