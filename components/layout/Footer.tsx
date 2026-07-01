@@ -130,7 +130,7 @@ export function Footer() {
               </p>
               <p className="text-brand-mist text-xs mt-3">{SITE.serviceArea}</p>
               <Link
-                href="/contact"
+                href="/#book"
                 className="btn-primary mt-5 inline-flex text-xs min-h-[44px]"
               >
                 Book a Pickup

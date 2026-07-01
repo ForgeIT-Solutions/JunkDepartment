@@ -1,14 +1,17 @@
 import type { MetadataRoute } from "next";
-import { SITE } from "@/lib/constants";
+import { SITE, SITEMAP_ROUTES } from "@/lib/constants";
 
 export const dynamic = "force-static";
 
+// The main nav is a single long-scroll page, but each section also exists as a
+// standalone route (kept for SEO) — all of them are listed here so search
+// engines can index them individually.
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  return [
-    { url: `${SITE.url}/`, lastModified: now, changeFrequency: "monthly", priority: 1 },
-    { url: `${SITE.url}/services/`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${SITE.url}/about/`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE.url}/contact/`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-  ];
+  return SITEMAP_ROUTES.map((route) => ({
+    url: `${SITE.url}${route === "/" ? "/" : `${route}/`}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: route === "/" ? 1 : 0.7,
+  }));
 }

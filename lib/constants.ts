@@ -24,13 +24,26 @@ export const SITE = {
   },
 };
 
+// Single long-scroll site: the header/footer nav jumps to sections on the
+// homepage. The matching /services, /about, etc. routes still exist (kept for
+// the sitemap / SEO), they're just not linked from the main nav.
 export const NAV_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "About", href: "/about" },
-  { label: "Service Area", href: "/service-area" },
-  { label: "Book", href: "/book" },
-  { label: "Contact", href: "/contact" },
+  { label: "Home", href: "/#top" },
+  { label: "Services", href: "/#services" },
+  { label: "About", href: "/#about" },
+  { label: "Service Area", href: "/#service-area" },
+  { label: "Book", href: "/#book" },
+  { label: "Contact", href: "/#contact" },
+];
+
+// The same routes as standalone pages — referenced by the sitemap only.
+export const SITEMAP_ROUTES = [
+  "/",
+  "/services",
+  "/about",
+  "/service-area",
+  "/book",
+  "/contact",
 ];
 
 export const SERVICES = [

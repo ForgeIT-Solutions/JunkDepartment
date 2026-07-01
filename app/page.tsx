@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
 import {
   Sofa,
@@ -13,6 +14,7 @@ import {
   MessageSquare,
   Clock,
   Phone,
+  Mail,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -21,6 +23,7 @@ import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { TrustBar } from "@/components/ui/TrustBar";
 import { ServiceAreaMap } from "@/components/ui/ServiceAreaMap";
+import { BookingForm } from "@/components/ui/BookingForm";
 import {
   SERVICES,
   STATS,
@@ -66,7 +69,7 @@ export default function Home() {
       />
 
       {/* ============== 1. HERO (split: hook left, image right) ============== */}
-      <section className="relative bg-brand-green-dark bg-grain overflow-hidden px-4 sm:px-6 pt-16 pb-12 sm:pt-24 sm:pb-20">
+      <section id="top" className="relative bg-brand-green-dark bg-grain overflow-hidden px-4 sm:px-6 pt-16 pb-12 sm:pt-24 sm:pb-20">
         <Image
           src="/logos/STACKED-WHITE.png"
           alt=""
@@ -107,7 +110,7 @@ export default function Home() {
               className="fade-up mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-stretch sm:items-center"
               style={{ animationDelay: "360ms" }}
             >
-              <Button href="/book" className="w-full sm:w-auto min-h-[52px] text-base">
+              <Button href="/#book" className="w-full sm:w-auto min-h-[52px] text-base">
                 Book a Pickup <ArrowRight size={18} />
               </Button>
               <a href={telHref} className="btn-outline w-full sm:w-auto min-h-[52px] text-base">
@@ -132,7 +135,7 @@ export default function Home() {
       <TrustBar />
 
       {/* ============== 2. INTRO / VALUE PROP ============== */}
-      <section className="bg-brand-charcoal py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
+      <section id="about" className="scroll-mt-24 bg-brand-charcoal py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-12 items-center">
           <div className="order-first md:order-last">
             <ImagePlaceholder
@@ -162,8 +165,8 @@ export default function Home() {
               </p>
             </div>
             <div className="mt-7">
-              <Button href="/about" variant="outline" className="min-h-[48px]">
-                More About Us <ArrowRight size={16} />
+              <Button href="/#services" variant="outline" className="min-h-[48px]">
+                See Our Services <ArrowRight size={16} />
               </Button>
             </div>
           </div>
@@ -171,7 +174,7 @@ export default function Home() {
       </section>
 
       {/* ============== 3. SERVICES GRID ============== */}
-      <section className="bg-brand-green py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
+      <section id="services" className="scroll-mt-24 bg-brand-green py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
         <SectionHeading
           eyebrow="What We Haul"
           title={`Junk Removal Services in ${SITE.city}`}
@@ -198,12 +201,12 @@ export default function Home() {
                 <p className="mt-1.5 sm:mt-2 text-brand-mist text-sm leading-relaxed">
                   {service.desc}
                 </p>
-                <a
-                  href="/services"
+                <Link
+                  href="/#book"
                   className="mt-4 inline-flex items-center gap-1.5 text-brand-gold text-xs sm:text-sm font-display font-bold uppercase tracking-[0.15em] hover:gap-2.5 transition-all"
                 >
-                  Learn More <ArrowRight size={14} />
-                </a>
+                  Get a Quote <ArrowRight size={14} />
+                </Link>
               </article>
             );
           })}
@@ -306,7 +309,7 @@ export default function Home() {
       </section>
 
       {/* ============== 7. SERVICE AREA (live map) ============== */}
-      <section className="bg-brand-green py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
+      <section id="service-area" className="scroll-mt-24 bg-brand-green py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
         <SectionHeading
           eyebrow="Service Area"
           title="Where We Work"
@@ -319,11 +322,6 @@ export default function Home() {
         <div className="mt-10 sm:mt-12 max-w-5xl mx-auto">
           <ServiceAreaMap />
         </div>
-        <div className="text-center mt-8">
-          <Button href="/service-area" variant="outline" className="min-h-[48px]">
-            View Full Service Area <ArrowRight size={16} />
-          </Button>
-        </div>
       </section>
 
       {/* ============== 8. FAQ ============== */}
@@ -332,7 +330,55 @@ export default function Home() {
         <FaqAccordion />
       </section>
 
-      {/* ============== 9. FINAL CTA ============== */}
+      {/* ============== 9. BOOK ============== */}
+      <section id="book" className="scroll-mt-24 bg-brand-green py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
+        <SectionHeading
+          eyebrow="Book Online"
+          title="Pick a Time. We Haul It."
+          centered
+        />
+        <p className="mt-4 max-w-2xl mx-auto text-center text-brand-cream/80 text-sm sm:text-base">
+          Choose a date and arrival window that works for you. No payment
+          required to book.
+        </p>
+        <div className="mt-10 sm:mt-12 max-w-3xl mx-auto bg-brand-green-dark border-t-[3px] border-brand-gold p-5 sm:p-8 lg:p-10 rounded-sm">
+          <BookingForm />
+        </div>
+      </section>
+
+      {/* ============== 10. CONTACT ============== */}
+      <section id="contact" className="scroll-mt-24 bg-brand-charcoal py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
+        <SectionHeading eyebrow="Get In Touch" title="Contact Us" centered />
+        <div className="mt-10 sm:mt-12 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+          <a
+            href={telHref}
+            className="bg-brand-green-dark border-t-[3px] border-brand-gold p-6 rounded-sm text-center hover:-translate-y-1 transition-transform"
+          >
+            <Phone size={28} className="mx-auto text-brand-gold" strokeWidth={1.5} aria-hidden />
+            <p className="mt-3 text-brand-gold font-display font-black uppercase tracking-[0.18em] text-xs">Call or Text</p>
+            <p className="mt-1 text-brand-cream text-sm sm:text-base break-words">{SITE.phone}</p>
+          </a>
+          <a
+            href={`mailto:${SITE.email}`}
+            className="bg-brand-green-dark border-t-[3px] border-brand-gold p-6 rounded-sm text-center hover:-translate-y-1 transition-transform"
+          >
+            <Mail size={28} className="mx-auto text-brand-gold" strokeWidth={1.5} aria-hidden />
+            <p className="mt-3 text-brand-gold font-display font-black uppercase tracking-[0.18em] text-xs">Email</p>
+            <p className="mt-1 text-brand-cream text-sm sm:text-base break-words">{SITE.email}</p>
+          </a>
+          <div className="bg-brand-green-dark border-t-[3px] border-brand-gold p-6 rounded-sm text-center">
+            <Clock size={28} className="mx-auto text-brand-gold" strokeWidth={1.5} aria-hidden />
+            <p className="mt-3 text-brand-gold font-display font-black uppercase tracking-[0.18em] text-xs">Hours</p>
+            {SITE.hours.map((h) => (
+              <p key={h.day} className="mt-1 text-brand-cream/90 text-xs sm:text-sm">
+                {h.day}: {h.time}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============== 11. FINAL CTA ============== */}
       <CTABanner />
     </>
   );
