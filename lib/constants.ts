@@ -214,11 +214,27 @@ export const SERVICE_AREA_CITIES = [
   "Sugar Grove",
 ];
 
-// Simple keyless Google Maps embed for the Service Area page. `query` is what
-// the map centers on; `zoom` sets how wide the view is (10 ≈ regional).
-export const SERVICE_AREA_MAP = {
-  query: "Oswego, IL",
+// Data for the live Leaflet map on the Service Area page. `cities` are the
+// glowing markers; `boundary` is the green service-area polygon (ordered
+// clockwise, non-self-intersecting). Keyless — uses free CARTO dark tiles.
+export const SERVICE_AREA = {
+  center: { lat: 41.672, lng: -88.3 },
   zoom: 10,
+  cities: [
+    { name: "Oswego", lat: 41.6828, lng: -88.3512 },
+    { name: "Naperville", lat: 41.748, lng: -88.1548 },
+    { name: "Plainfield", lat: 41.627, lng: -88.204 },
+    { name: "Aurora", lat: 41.7606, lng: -88.3201 },
+    { name: "Plano", lat: 41.6628, lng: -88.5372 },
+    { name: "Joliet", lat: 41.525, lng: -88.0817 },
+    { name: "Sugar Grove", lat: 41.7614, lng: -88.442 },
+  ],
+  boundary: [
+    { lat: 41.7614, lng: -88.442 }, // Sugar Grove (NW)
+    { lat: 41.748, lng: -88.1548 }, // Naperville (NE)
+    { lat: 41.525, lng: -88.0817 }, // Joliet (SE)
+    { lat: 41.6628, lng: -88.5372 }, // Plano (SW)
+  ],
 };
 
 // Trust-signal badge row shown directly under the hero.

@@ -20,10 +20,10 @@ import { CTABanner } from "@/components/ui/CTABanner";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { TrustBar } from "@/components/ui/TrustBar";
+import { ServiceAreaMap } from "@/components/ui/ServiceAreaMap";
 import {
   SERVICES,
   STATS,
-  SERVICE_AREA_CITIES,
   PROCESS_STEPS,
   WHY_US,
   SITE,
@@ -305,34 +305,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============== 7. SERVICE AREA ============== */}
-      <section className="bg-brand-green py-12 sm:py-16 overflow-hidden">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <p className="text-brand-gold font-display font-black uppercase tracking-[0.25em] text-[10px] sm:text-xs mb-3">
-            Service Area
-          </p>
-          <h2 className="font-display font-black uppercase text-brand-cream text-2xl sm:text-3xl md:text-5xl tracking-tight leading-tight">
-            Serving the Fox Valley
-            <ArrowRight size={28} className="text-brand-gold inline mx-2 align-middle" />
-            and Beyond
-          </h2>
-          <div className="mt-6">
-            <Button href="/service-area" variant="outline" className="min-h-[48px]">
-              View Our Service Area Map <ArrowRight size={16} />
-            </Button>
-          </div>
+      {/* ============== 7. SERVICE AREA (live map) ============== */}
+      <section className="bg-brand-green py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
+        <SectionHeading
+          eyebrow="Service Area"
+          title="Where We Work"
+          centered
+        />
+        <p className="mt-4 max-w-2xl mx-auto text-center text-brand-cream/80 text-sm sm:text-base">
+          Proudly serving the Fox Valley and the southwest Chicago suburbs. If
+          you&apos;re near one of these towns, we&apos;ve got you covered.
+        </p>
+        <div className="mt-10 sm:mt-12 max-w-5xl mx-auto">
+          <ServiceAreaMap />
         </div>
-        <div className="mt-6 overflow-hidden">
-          <div className="marquee-track text-brand-gold/60 font-display font-bold uppercase tracking-[0.25em] text-xs sm:text-sm">
-            {[...SERVICE_AREA_CITIES, ...SERVICE_AREA_CITIES, ...SERVICE_AREA_CITIES, ...SERVICE_AREA_CITIES].map(
-              (city, i) => (
-                <span key={i} className="px-5 sm:px-8 flex items-center gap-5 sm:gap-8">
-                  {city}
-                  <span aria-hidden className="text-brand-gold/40">★</span>
-                </span>
-              )
-            )}
-          </div>
+        <div className="text-center mt-8">
+          <Button href="/service-area" variant="outline" className="min-h-[48px]">
+            View Full Service Area <ArrowRight size={16} />
+          </Button>
         </div>
       </section>
 
