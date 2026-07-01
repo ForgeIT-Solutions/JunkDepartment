@@ -312,10 +312,15 @@ export default function Home() {
             Service Area
           </p>
           <h2 className="font-display font-black uppercase text-brand-cream text-2xl sm:text-3xl md:text-5xl tracking-tight leading-tight">
-            Serving {SITE.city}
+            Serving the Fox Valley
             <ArrowRight size={28} className="text-brand-gold inline mx-2 align-middle" />
             and Beyond
           </h2>
+          <div className="mt-6">
+            <Button href="/service-area" variant="outline" className="min-h-[48px]">
+              View Our Service Area Map <ArrowRight size={16} />
+            </Button>
+          </div>
         </div>
         <div className="mt-6 overflow-hidden">
           <div className="marquee-track text-brand-gold/60 font-display font-bold uppercase tracking-[0.25em] text-xs sm:text-sm">
