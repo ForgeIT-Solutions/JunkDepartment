@@ -128,7 +128,7 @@ export function BookingForm() {
         </div>
         <div>
           <label htmlFor="bf-address" className={labelBase}>Pickup Address</label>
-          <input id="bf-address" name="address" type="text" autoComplete="street-address" className={inputBase} placeholder="123 Main St, Your City" />
+          <input id="bf-address" name="address" type="text" autoComplete="street-address" className={inputBase} placeholder="123 Main St, Oswego" />
         </div>
       </div>
 

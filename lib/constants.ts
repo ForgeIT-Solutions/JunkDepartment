@@ -9,10 +9,10 @@ export const SITE = {
   phone: "(331) 213-9977",
   email: "info@getjunkdept.com",
   address: "", // TODO client to fill
-  city: "Your City", // TODO client to fill — replace all "Your City" references
-  state: "ST", // TODO client to fill
+  city: "the Fox Valley", // regional label — the crew covers multiple IL towns
+  state: "IL",
   url: "https://junkdept.com", // TODO client to fill — production URL
-  serviceArea: "Serving the Greater Your City Area",
+  serviceArea: "Serving the Fox Valley & Southwest Chicago Suburbs",
   hours: [
     { day: "Monday–Saturday", time: "7:00 AM – 7:00 PM" },
     { day: "Sunday", time: "By appointment" },
