@@ -28,6 +28,7 @@ export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
+  { label: "Book", href: "/book" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -330,6 +331,16 @@ export const TEAM = [
  * 4. Formspree free tier: 50 submissions/month — upgrade if needed
  */
 export const FORMSPREE_FORM_ID = "YOUR_FORM_ID_HERE";
+
+// Arrival windows offered by the on-site scheduler. The customer picks a date
+// (Mon–Sat) + one of these windows; the office confirms the exact time in Jobber.
+export const TIME_SLOTS = [
+  "8:00 AM – 10:00 AM",
+  "10:00 AM – 12:00 PM",
+  "12:00 PM – 2:00 PM",
+  "2:00 PM – 4:00 PM",
+  "4:00 PM – 6:00 PM",
+];
 
 export const SERVICE_TYPE_OPTIONS = [
   "Furniture Removal",

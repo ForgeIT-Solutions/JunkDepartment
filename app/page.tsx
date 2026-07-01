@@ -108,8 +108,8 @@ export default function Home() {
               className="fade-up mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-stretch sm:items-center"
               style={{ animationDelay: "360ms" }}
             >
-              <Button href="#quote" className="w-full sm:w-auto min-h-[52px] text-base">
-                Get an Instant Quote <ArrowRight size={18} />
+              <Button href="/book" className="w-full sm:w-auto min-h-[52px] text-base">
+                Book a Pickup <ArrowRight size={18} />
               </Button>
               <a href={telHref} className="btn-outline w-full sm:w-auto min-h-[52px] text-base">
                 <Phone size={16} /> {SITE.phone}

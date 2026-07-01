@@ -84,10 +84,10 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <Link
-          href="/contact"
+          href="/book"
           className="hidden md:inline-flex btn-primary text-xs px-5 py-2.5"
         >
-          Get a Free Quote
+          Book a Pickup
         </Link>
 
         {/* Mobile hamburger */}
@@ -155,12 +155,12 @@ export function Navbar() {
             ))}
             <li className="w-full max-w-xs">
               <Link
-                href="/contact"
+                href="/book"
                 onClick={() => setMenuOpen(false)}
                 className="overlay-link btn-primary mt-4 sm:mt-6 w-full min-h-[48px] text-base"
                 style={{ animationDelay: `${NAV_LINKS.length * 80}ms` }}
               >
-                Get a Free Quote
+                Book a Pickup
               </Link>
             </li>
           </ul>
